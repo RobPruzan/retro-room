@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["package.json", "**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "build:api": {
+      "outputs": ["dist/**"],
+      "inputs": ["services/api/**", "packages/**"],
+      "cache": true
+    },
+    "build:frontend": {
+      "dependsOn": ["build:api"],
+      "outputs": ["dist/**"],
+      "inputs": ["services/frontend/**", "services/api/**", "packages/**"],
+      "cache": true
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "dev": {
+      "cache": true,
+      "dependsOn": ["^dev"],
+      "outputs": [""],
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+    }
+  }
+}

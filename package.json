@@ -1,0 +1,27 @@
+{
+  "name": "retro-room",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/api": "workspace:*",
+    "@repo/frontend": "workspace:*",
+    "prettier": "^3.1.1",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.0.21",
+  "workspaces": [
+    "services/api",
+    "services/frontend",
+    "packages/*"
+  ]
+}
